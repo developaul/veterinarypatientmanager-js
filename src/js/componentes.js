@@ -124,8 +124,15 @@ export const loadEdition = cita => {
     edicion = true;
 }
 
+
+
 // Events
 export const startEventListeners = () => {
+    document.addEventListener( 'DOMContentLoaded', () => {
+        administradorCitas.citas = JSON.parse( localStorage.getItem( 'citas' ) ) || [];
+        ui.showCitas( administradorCitas );
+    });
+
     form.addEventListener( 'submit', validateCita );
     
     mascotaInput.addEventListener( 'input', dataCita );
