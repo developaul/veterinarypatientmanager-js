@@ -1,4 +1,4 @@
-import { content } from '../componentes.js';
+import { content, containerCitas } from '../componentes.js';
 
 export class UI {
     showAlert( message, type ) {
@@ -11,5 +11,9 @@ export class UI {
         content.insertBefore( divMessage, document.querySelector( '.agregar-cita' ) );
 
         setTimeout( () => divMessage.remove(), 5000 );
+    }
+
+    cleanHTML() {
+        while( containerCitas.firstChild ) { containerCitas.removeChild( containerCitas.firstChild ); }
     }
 }
