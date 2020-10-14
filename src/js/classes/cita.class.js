@@ -10,5 +10,8 @@ export class Cita {
     deleteCita( id ) {
         this.citas = this.citas.filter( cita => cita.id !== id );
     }
-    
+
+    editCita( currentCita ) {
+        this.citas = this.citas.map( cita => cita.id === currentCita.id ? currentCita : cita );
+    }
 }
