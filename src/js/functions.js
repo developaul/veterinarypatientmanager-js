@@ -1,18 +1,13 @@
 import { Cita, UI } from './classes/index.js';
-import '../css/bootstrap.css';
-
-
-
-// References
-export const content            = document.querySelector( '#contenido' ),
-             form               = document.querySelector( '#nueva-cita' ),
-             containerCitas     = document.querySelector( '#citas' ),
-             mascotaInput       = document.querySelector( '#mascota' ),
-             propietarioInput   = document.querySelector( '#propietario' ),
-             telefonoInput      = document.querySelector( '#telefono' ),
-             fechaInput         = document.querySelector( '#fecha' ),
-             horaInput          = document.querySelector( '#hora' ),
-             sintomasInput      = document.querySelector( '#sintomas' );
+import { 
+    form, 
+    mascotaInput,
+    propietarioInput,
+    telefonoInput,
+    fechaInput,
+    horaInput,
+    sintomasInput
+} from './references.js';
 
 // Variables
 const citaObj = {
@@ -23,25 +18,22 @@ const citaObj = {
     hora: '',
     sintomas: '',
 }
-
 let edicion;
 
 // Instancias
-const ui = new UI(),
-      administradorCitas = new Cita();
-
+export const ui = new UI(),
+             administradorCitas = new Cita();
 
 
 // Functions
 // Obtiene constantemente los valore del formulario
-const dataCita = event => {
+export const dataCita = event => {
     citaObj[ event.target.name ] = event.target.value;
 }
 
 // Reseteando el objeto
-const resetObject = () => {
-    const properties = Object.keys( citaObj );
-    for( const property of properties ) { citaObj[ property ] = ''; }
+export const resetObject = () => {
+    for( const property of Object.keys( citaObj ) ) { citaObj[ property ] = ''; }
 }
 
 // Agrega una nueva cita o la actualiza
@@ -77,7 +69,7 @@ const addCita = () => {
 }
 
 // Valida la nueva cita ingresada
-const validateCita = event => {
+export const validateCita = event => {
     event.preventDefault();
     
     const { mascota, propietario, telefono, fecha, hora, sintomas } = citaObj
@@ -122,23 +114,4 @@ export const loadEdition = cita => {
     // Cambiar el texto del boton
     form.querySelector( 'button[type="submit"]' ).textContent = 'Guardar Cambios';
     edicion = true;
-}
-
-
-
-// Events
-export const startEventListeners = () => {
-    document.addEventListener( 'DOMContentLoaded', () => {
-        administradorCitas.citas = JSON.parse( localStorage.getItem( 'citas' ) ) || [];
-        ui.showCitas( administradorCitas );
-    });
-
-    form.addEventListener( 'submit', validateCita );
-    
-    mascotaInput.addEventListener( 'input', dataCita );
-    propietarioInput.addEventListener( 'input', dataCita );
-    telefonoInput.addEventListener( 'input', dataCita );
-    fechaInput.addEventListener( 'input', dataCita );
-    horaInput.addEventListener( 'input', dataCita );
-    sintomasInput.addEventListener( 'input', dataCita );
 }

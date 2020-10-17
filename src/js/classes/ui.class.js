@@ -1,6 +1,7 @@
-import { content, containerCitas, deleteCita, loadEdition } from '../componentes.js';
+import { content, containerCitas } from '../references.js';
+import {  deleteCita, loadEdition } from '../functions.js';
 
-export class UI {
+class UI {
     showAlert( message, type ) {
         const divMessage = document.createElement( 'div' );
         divMessage.classList.add( 'text-center', 'alert', 'd-block', 'col-12' );
@@ -81,3 +82,5 @@ export class UI {
         while( containerCitas.firstChild ) { containerCitas.removeChild( containerCitas.firstChild ); }
     }
 }
+
+export default UI;

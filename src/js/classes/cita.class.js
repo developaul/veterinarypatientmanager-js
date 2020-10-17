@@ -1,4 +1,4 @@
-export class Cita {
+class Cita {
     constructor() {
         this.citas = [];
     }
@@ -22,3 +22,5 @@ export class Cita {
         localStorage.setItem( 'citas', JSON.stringify( this.citas ) );
     }
 }
+
+export default Cita;

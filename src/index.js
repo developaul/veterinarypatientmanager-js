@@ -1,4 +1,6 @@
-import { startEventListeners } from './js/componentes.js';
+import App from './js/classes/app.js';
 import './styles.css';
 
-startEventListeners();
+// Iniciando App
+const app = new App();
+app.initApp();
