@@ -169,6 +169,8 @@ export const createDB = () => {
     // si todo sale bien
     createDB.onsuccess = () => {
         DB = createDB.result;
+
+        ui.showCitas();
     }
 
     // Definiendo Schema
