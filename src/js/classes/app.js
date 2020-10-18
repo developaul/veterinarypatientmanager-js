@@ -1,8 +1,7 @@
 import { 
     dataCita, 
-    validateCita, 
-    administradorCitas, 
-    ui 
+    validateCita,
+    createDB
 } from '../functions.js';
 import {
     form,
@@ -21,10 +20,7 @@ class App {
     }
 
     initApp() {
-        document.addEventListener( 'DOMContentLoaded', () => {
-            administradorCitas.citas = JSON.parse( localStorage.getItem( 'citas' ) ) || [];
-            ui.showCitas( administradorCitas );
-        });
+        document.addEventListener( 'DOMContentLoaded', createDB );
     
         form.addEventListener( 'submit', validateCita );
         
